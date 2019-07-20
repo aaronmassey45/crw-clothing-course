@@ -17,7 +17,6 @@ import './App.css';
 
 const App = ({ setCurrentUser, currentUser }) => {
   useEffect(() => {
-    console.log('I am subscribing');
     const unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
       if (userAuth) {
         const userRef = await createUserProfileDocument(userAuth);
@@ -32,7 +31,6 @@ const App = ({ setCurrentUser, currentUser }) => {
       setCurrentUser(userAuth);
     });
     return () => {
-      console.log('Unsubscribing');
       unsubscribeFromAuth();
     };
   }, [setCurrentUser]);
